@@ -2,11 +2,9 @@ package nl.demo.blog.dao;
 
 import nl.demo.blog.model.Blog;
 import nl.demo.blog.repository.BlogRepository;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -37,30 +35,35 @@ public class BlogDaoImpl implements BlogDao {
     @Override
     public Blog create(Blog blog) {
         blog.setDate(new Date());
-        blogRepository.save(blog);
-        return blog;
+        return blogRepository.save(blog);
     }
 
     @Override
     public Blog update(Blog blog) {
+        Blog updated = null;
+
         Blog toBeUpdated = blogRepository.findOne(blog.getId());
-        if (toBeUpdated == null) {
-            return null;
+        if (toBeUpdated != null) {
+            toBeUpdated.setTitle(blog.getTitle());
+            toBeUpdated.setText(blog.getText());
+            toBeUpdated.setDate(new Date());
+            updated = blogRepository.save(toBeUpdated);
         }
-        toBeUpdated.setTitle(blog.getTitle());
-        toBeUpdated.setText(blog.getText());
-        toBeUpdated.setDate(new Date());
-        return blogRepository.save(toBeUpdated);
+
+        return updated;
     }
 
     @Override
     public Blog delete(String id) {
+        Blog deleted = null;
+
         Blog toBeDeleted = blogRepository.findOne(id);
-        if (toBeDeleted == null) {
-            return null;
+        if (toBeDeleted != null) {
+            blogRepository.delete(toBeDeleted);
+            deleted = toBeDeleted;
         }
-        blogRepository.delete(toBeDeleted);
-        return toBeDeleted;
+
+        return deleted;
     }
 
     @Override

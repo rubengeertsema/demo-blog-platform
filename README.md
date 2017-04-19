@@ -2,6 +2,7 @@
 Purpose of the demo blog platform project is to create a simple blog platform with a backend, a web client and a mobile app for 
 iOS and Android. In this project I intend to explore several technologies, like:
 * Spring-Boot for the backend
+* Swagger for the api documentation
 * Angular (version 4) for the web client
 * React-Native for the mobile apps
 * Docker because it is awesome

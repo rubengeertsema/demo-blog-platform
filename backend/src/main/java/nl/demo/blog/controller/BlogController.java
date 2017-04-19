@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 /**
  * Created by rubengeertsema on 16/04/2017.
  */
+//TODO: add swagger annotations
 @Controller
 @RequestMapping("/api/blog")
 public class BlogController {
