@@ -1,0 +1,28 @@
+<md-toolbar color="primary">
+    <span>Demo Blog Platform</span>
+    <span class="spacer"></span>
+    <button md-icon-button [mdMenuTriggerFor]="menu">
+      <md-icon>more_vert</md-icon>
+    </button>
+    <md-menu #menu="mdMenu">
+        <button md-menu-item>
+        <md-icon>create</md-icon>
+        <span>Create new blog post</span>
+      </button>
+    </md-menu>
+</md-toolbar>
+
+<md-tab-group>
+    <md-tab label="All blogs">
+        <md-card class="card" *ngFor="let blog of blogs; let i = index">
+            <md-card-content>
+                <p>Title: {{blog.title}}</p>
+                <p>Text: {{blog.text}}</p>
+                <p>Date: {{blog.date| date : "dd/MM/yy H:mm"}}</p>
+                <p>ID: {{blog.id}}</p>
+            </md-card-content>
+        </md-card>
+    </md-tab>
+    <md-tab label="Saved blogs">
+    </md-tab>
+</md-tab-group>

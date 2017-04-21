@@ -1,0 +1,35 @@
+{
+    "content": [{
+            "id": "58fa7a7d3e6a27ba00f3833a",
+            "title": "Test post 4",
+            "text": "Some post text.",
+            "date": 1492810365386
+        },
+        {
+            "id": "58fa7a763e6a27ba00f38339",
+            "title": "Test post 3",
+            "text": "Some post text.",
+            "date": 1492810358798
+        },
+        {
+            "id": "58fa7a733e6a27ba00f38338",
+            "title": "Test post 2",
+            "text": "Some post text.",
+            "date": 1492810355842
+        },
+        {
+            "id": "58fa7a6d3e6a27ba00f38337",
+            "title": "Test post 1",
+            "text": "Some post text.",
+            "date": 1492810349925
+        }
+    ],
+    "last": true,
+    "totalPages": 1,
+    "totalElements": 4,
+    "size": 20,
+    "number": 0,
+    "sort": null,
+    "first": true,
+    "numberOfElements": 4
+}
