@@ -6,11 +6,13 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { BlogService } from './providers/blog.service';
+import { TruncatePipe } from './pipes/truncate';
 import 'hammerjs';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,
