@@ -19,4 +19,16 @@ export class BlogService {
       .map((res: Response) => res.json().content)
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
+
+  public deleteBlog(blog: Blog): Observable<Blog[]> {
+    return this.http.delete(this.baseUrl + '/' + blog.id)
+      .map((res: Response) => res.json().content)
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  public deleteAll(): Observable<string> {
+    return this.http.delete(this.baseUrl)
+      .map((res: Response) => res)
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
 }

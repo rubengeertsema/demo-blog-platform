@@ -1,0 +1,20 @@
+.dialog {
+  width: 40em;
+  max-height: 40em;
+}
+
+.dialog-header{
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.dialog-body {
+
+}
+
+.dialog-footer {
+
+}
+
+.full-dialog-width {
+  width: 100%;
+}

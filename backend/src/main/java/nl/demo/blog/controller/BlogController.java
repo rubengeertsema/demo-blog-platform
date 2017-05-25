@@ -66,6 +66,6 @@ public class BlogController {
     @DeleteMapping
     public ResponseEntity deleteAll() {
         blogDao.deleteAll();
-        return new ResponseEntity<>("Deleted all blog post.", HttpStatus.OK);
+        return new ResponseEntity<>("Deleted all blog posts.", HttpStatus.OK);
     }
 }

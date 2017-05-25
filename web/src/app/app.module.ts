@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { AppComponent } from './app.component';
+import { NewBlogDialog } from './new-blog-dialog/new-blog-dialog';
 import { BlogService } from './providers/blog.service';
 import { TruncatePipe } from './pipes/truncate';
 import 'hammerjs';
@@ -12,14 +13,18 @@ import 'hammerjs';
 @NgModule({
   declarations: [
     AppComponent,
-    TruncatePipe
+    TruncatePipe,
+    NewBlogDialog
   ],
+  entryComponents: [
+    NewBlogDialog
+    ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
-    MaterialModule.forRoot()
+    MaterialModule
   ],
   providers: [
     BlogService

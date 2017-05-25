@@ -1,0 +1,45 @@
+version: '2.1'
+
+services:
+    blog_web:
+      build: ./web
+      image: org/blog-web:dev
+      container_name: blog-web-dev
+      depends_on:
+        - blog_backend
+      volumes:
+        - ./web:/app
+      privileged: true
+      ports:
+        - "4200:4200"
+        - "49152:49152"
+      networks:
+        - development
+      command: bash -c "npm install && ng serve"
+    blog_backend:
+      build: ./backend
+      image: org/blog-backend:dev
+      container_name: blog-backend-dev
+      depends_on:
+        - mongo
+      volumes:
+        - ./backend/:/app
+      privileged: true
+      ports:
+        - "8080:8080"
+      networks:
+        - development
+      command: ./mvnw spring-boot:run
+    mongo:
+      image: mongo:latest
+      container_name: blog-mongo-dev
+      volumes:
+        - ./data/db:/data/db
+      ports:
+        - "27017:27017"
+      networks:
+        - development
+
+networks:
+  development:
+    driver: bridge

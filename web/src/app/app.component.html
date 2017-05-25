@@ -2,13 +2,11 @@
     <span>Demo Blog Platform</span>
     <span class="spacer"></span>
     <button md-icon-button [mdMenuTriggerFor]="menu">
-      <md-icon>more_vert</md-icon>
-    </button>
+    <md-icon>more_vert</md-icon>
+  </button>
     <md-menu #menu="mdMenu">
-        <button md-menu-item>
-        <md-icon>create</md-icon>
-        <span>Create new blog post</span>
-      </button>
+        <button md-menu-item (click)="openNewBlogDialog()"><md-icon>create</md-icon><span>Create new blog</span></button>
+        <button md-menu-item (click)="deleteAll()"><md-icon>delete</md-icon><span>Delete all blogs</span></button>
     </md-menu>
 </md-toolbar>
 
@@ -25,5 +23,9 @@
         <md-card-content>
             <p>{{blog.text | truncate : 750}}</p>
         </md-card-content>
+        <md-card-actions>
+            <button color="primary" md-raised-button>Edit</button>
+            <button color="warn" md-raised-button (click)="deleteBlog(blog,i)">Delete</button>
+        </md-card-actions>
     </md-card>
 </md-list>
