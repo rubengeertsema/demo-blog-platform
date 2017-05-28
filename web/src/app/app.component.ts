@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { MdDialog, MdDialogRef } from '@angular/material';
-import { Blog } from './models/blog.model';
-import { BlogService } from './providers/blog.service';
-import { NewBlogDialog } from './new-blog-dialog/new-blog-dialog';
+import {Component, OnInit} from '@angular/core';
+import {MdDialog, MdDialogRef} from '@angular/material';
+import {Blog} from './models/blog.model';
+import {BlogService} from './providers/blog.service';
+import {NewBlogDialog} from './new-blog-dialog/new-blog-dialog';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +10,12 @@ import { NewBlogDialog } from './new-blog-dialog/new-blog-dialog';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  selectedOption: string;
+
   blogs: Blog[];
 
-  constructor(
-    private blogService: BlogService,
-    public dialog: MdDialog
-  ) { }
+  constructor(private blogService: BlogService,
+              public dialog: MdDialog) {
+  }
 
   ngOnInit(): void {
     this.getBlogs();
@@ -24,8 +23,10 @@ export class AppComponent implements OnInit {
 
   openNewBlogDialog(): void {
     let dialogRef = this.dialog.open(NewBlogDialog);
-    dialogRef.afterClosed().subscribe(result => {
-      this.selectedOption = result;
+    dialogRef.afterClosed().subscribe((blog) => {
+      if (blog) {
+        this.blogs.unshift(blog);
+      }
     });
   }
 
@@ -43,18 +44,18 @@ export class AppComponent implements OnInit {
     this.blogService.deleteBlog(blog)
       .subscribe((blog) => {
         console.log(blog);
-        this.blogs.splice(i,1);
-    }, error => {
+        this.blogs.splice(i, 1);
+      }, error => {
         console.log('Could not delete blog.');
-    });
+      });
   }
 
   deleteAll() {
     this.blogService.deleteAll()
       .subscribe(() => {
         this.blogs = [];
-    }, error => {
+      }, error => {
         console.log('Could not delete blog.');
-    });
+      });
   }
 }

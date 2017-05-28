@@ -5,7 +5,7 @@ export class Blog {
   public text: string;
   public date: Date;
 
-  constructor(date: Date, id: string, text: string, title: string) {
+  constructor(id: string, title: string, text: string, date: Date) {
     this.id = id;
     this.title = title;
     this.text = text;
